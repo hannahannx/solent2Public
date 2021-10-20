@@ -36,7 +36,8 @@ public class ShoppingCartImpl implements ShoppingCart {
 
     @Override
     public void removeItemFromCart(String itemUuid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        itemMap.remove(itemUuid);
     }
 
     @Override
