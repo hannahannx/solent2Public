@@ -13,6 +13,7 @@
 <%
 
     String message="";
+    Integer updatedQuantity = 0;
 
     ShoppingService shoppingService = WebObjectFactory.getShoppingService();
 
@@ -29,6 +30,8 @@
     if ("addItemToCart".equals(action)) {
         message = "adding "+itemName + " to cart";
         ShoppingItem shoppingItem = shoppingService.getNewItemByName(itemName);
+        //shoppingItem.setQuantity(1);
+        
         message = "adding "+itemName + " to cart : "+shoppingItem;
         shoppingCart.addItemToCart(shoppingItem);
     }
@@ -56,17 +59,19 @@
             <tr>
                 <th>Item Name</th>
                 <th>Price</th>
-                <th></th>
+                <th>Quantity</th>
             </tr>
 
             <% for (ShoppingItem item : shoppingService.getAvailableItems()) {%>
             <tr>
+               
                 <td><%=item.getName()%></td>
                 <td><%=item.getPrice()%></td>
                 <td></td>
                 <td>
                     <!-- post avoids url encoded parameters -->
                     <form action="./home.jsp" method="get">
+                        <input  type="number" name="quantity" value="1" >
                         <input type="hidden" name="itemName" value="<%=item.getName()%>">
                         <input type="hidden" name="action" value="addItemToCart">
                         <button type="submit" >Add Item</button>
@@ -97,12 +102,14 @@
                         <input type="hidden" name="itemUUID" value="<%=item.getUuid()%>">
                         <input type="hidden" name="action" value="removeItemFromCart">
                         <button type="submit" >Remove Item</button>
-                    </form> 
+                    </form>
                 </td>
             </tr>
             <% }%>
-
+            <tr> 
+                <td> This is the total of the shopping cart:</td>
+                <td> <%=shoppingCart.getTotal()%> </td>
+            </tr>                
         </table>
-
     </body>
 </html>

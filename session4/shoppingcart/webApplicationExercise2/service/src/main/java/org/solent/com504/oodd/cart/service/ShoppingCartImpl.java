@@ -42,7 +42,13 @@ public class ShoppingCartImpl implements ShoppingCart {
 
     @Override
     public double getTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double totalShopping = 0;
+       
+        for (String itemUUID : itemMap.keySet()) {
+            ShoppingItem shoppingCartItem = itemMap.get(itemUUID);
+            totalShopping = totalShopping + shoppingCartItem.getPrice() * shoppingCartItem.getQuantity() ;
+        }
+           return totalShopping;
     }
 
 }

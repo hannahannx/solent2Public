@@ -22,8 +22,10 @@
     </head>
     <body>
         <h1>Check Credit Card</h1>
-   
-        TODO CREATE A PAGE WHICH CHECKS CARD HERE
-
+        
+        <form>
+            <input type="text" name="cardNum">
+            <input type="submit" name="submit">
+        </form>
     </body>
 </html>
