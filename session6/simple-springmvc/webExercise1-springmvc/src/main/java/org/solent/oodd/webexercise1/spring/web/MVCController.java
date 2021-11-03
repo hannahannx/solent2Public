@@ -58,5 +58,17 @@ public class MVCController {
         //logger.error(strStackTrace); // send to logger first
         return "error"; // default friendly exception message for user
     }
+    
+        // this simply calls the jspexample3d.jsp page (without any modifications) when /userlist is requested 
+    @RequestMapping(value = "/userlist", method = {RequestMethod.GET, RequestMethod.POST})
+    public String jspexample3d(Model model, HttpSession session) {
+        return "jspexample3d";
+    }
+
+    // this simply calls the jspexample3d-modify.jsp page (without any modifications) when /userlist-modify is requested 
+    @RequestMapping(value = "/userlist-modify", method = {RequestMethod.GET, RequestMethod.POST})
+    public String jspexample3dModify(Model model, HttpSession session) {
+        return "jspexample3d-modify";
+    }
 
 }
